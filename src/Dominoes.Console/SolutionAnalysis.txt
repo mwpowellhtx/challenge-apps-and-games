@@ -1,0 +1,48 @@
+
+Solution analysis:
+
+1) Besides the algorithms themselves, which are similar, but subtly different, there are two main constructs that support the approach.
+
+1a) First, we implement a sparse dictionary of long-keyed Domino. We support long (Int64) for purposes of allowing precisions that could potentially expand to int.MaxValue (Int32). We allow extended values because the extents could reach beyond the range of the integer itself. So to avoid this scenario, we will use long.
+
+1b) Second, the Domino itself, which will be described next.
+
+1c) Finally, we implement the DistanceCalculator, which we will describe last.
+
+2) The Domino captures the core concern for the problem domain.
+
+2a) Domino captures not only its Position but also its Height. These are both verified for acceptable values, for which not being, exceptions are thrown.
+
+2b) Domino exposes a Right- and LeftCascadedExtent, which is the Position plus or minus the Height, respectively. These values are used to determine when a domino is likely to cascade onto another domino.
+
+2c) Similarly, Right- and LeftcascadedDistance is exposed for purposes of capturing the cascaded distances during calculation.
+
+2d) Finally, although mentioned in the problem description, domino widths are negligible for modeling purposes, so we will ignore them. The problem can be further elaborated if so desired.
+
+3) Now for the DominoDictionary. We implement IDictionary, keyed on long, which is the Domino position. The value is the Domino itself.
+
+3a) The collection is sparse. That is, we contain only those Dominos that exist. Default responses for non-existent dominos yield a value of null.
+
+4) Finally, for the DistanceCalculator.
+
+4a) We receive input from TextReader, and report output to TextWriter. This allows for maximum testability of the calculator during testing, while also permitting easy transition into production where Console.In and Console.Out, or any other reader/writer combination, might be desired.
+
+4b) Input values are read, parsed, and validated before installing constructed Domino instances into the sparse dictionary. Simple validation is performed, for which if anything fails exceptions will be thrown. Simple checks for expected number of items, and so forth, is also performed along similar lines.
+
+4c) The cascading left/right algorithms are fairly close to each other in terms of their approach, saving for being careful of the left/right boundaries, what is min, max, calculating counts, extents, etc, depending on which left or right perspective.
+
+4d) Since output is desired from left to right, the governing loop indexes the domino keys from left to right using the parsed ExpectedCount.
+
+4e) Default values (null) yield a return value of zero (0). Non-null values perform the cascading operation.
+
+4f) The essense of the calculation is to drill through a series of incrementally increasing extents in either direction, left or right, until there are no more extents, or until there is no more change.
+
+4g) Finally, yielded output is reported to a StringBuilder, whose string value is subsequently trimmed and written to the writer.
+
+What is the time complexity of your solution?
+
+Time complexity is pretty close to being O(n). The dictionary itself is virtually better than O(1), whereas the algorithm itself remains pretty close to O(n) since the full range of outputs corresponding to the full range of inputs must be reported.
+
+What is the space complexity of your solution?
+
+Space complexity is better than O(n) since at most the total number of dominoes must kept track of. So although their search is fast (dictionary), their population is unavoidable.
