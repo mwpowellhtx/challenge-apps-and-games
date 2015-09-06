@@ -158,6 +158,7 @@ namespace MinionZapper
 
             do
             {
+                // This is the best filtering / sorting that we can do.
                 var remaining
                     = (from m in minions
                         orderby m.Health descending
@@ -199,10 +200,14 @@ namespace MinionZapper
         /// through live input.
         /// </summary>
         /// <param name="reader"></param>
-        public Scenario(TextReader reader)
+        /// <param name="writer"></param>
+        public Scenario(TextReader reader, TextWriter writer)
         {
+            _writer = writer;
             Read(reader);
         }
+
+        private readonly TextWriter _writer;
 
         private static string PrepareText(string text)
         {
@@ -273,24 +278,24 @@ namespace MinionZapper
             return true;
         }
 
-        public void Run()
+        public void Run(Action readKey)
         {
             var killed = Wizard.Cast(Spell, Minions.ToArray());
 
             //// For purposes of online submittal.
-            //Console.WriteLine("Input:");
-            //Console.WriteLine(Lines[0]);
-            //Console.WriteLine(Lines[1]);
+            //_writer.WriteLine("Input:");
+            //_writer.WriteLine(Lines[0]);
+            //_writer.WriteLine(Lines[1]);
 
-            //Console.WriteLine();
+            //_writer.WriteLine();
 
-            //Console.WriteLine("Output:");
-            Console.WriteLine("{0}", killed);
+            //_writer.WriteLine("Output:");
+            _writer.WriteLine("{0}", killed);
 
-            //Console.WriteLine();
+            //_writer.WriteLine();
 
-            //Console.WriteLine("Press any key to continue");
-            //Console.ReadKey();
+            //_writer.WriteLine("Press any key to continue");
+            readKey();
         }
     }
 
@@ -339,20 +344,20 @@ namespace MinionZapper
 500 400 325 300 250"
         };
 
-        private static void RunScenario(string text)
+        private static void RunScenario(string text, TextWriter writer)
         {
             using (var reader = new StringReader(text))
             {
-                new Scenario(reader).Run();
+                new Scenario(reader, writer).Run(() => Console.ReadKey());
             }
         }
 
         private static void Main(string[] args)
         {
             foreach (var text in Scenarios)
-                RunScenario(text);
+                RunScenario(text, Console.Out);
             //// For purposes of online submittal.
-            //new Scenario(Console.In).Run();
+            //new Scenario(Console.In, Console.Out).Run(() => { });
         }
     }
 }

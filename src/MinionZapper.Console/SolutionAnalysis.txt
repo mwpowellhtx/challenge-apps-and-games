@@ -1,0 +1,56 @@
+
+Solution analysis:
+
+0) Will assume that my audience is at least educated in good Object Oriented principles, and with at least moderate exprience developing in .NET, in particular C#.
+
+1) First, we want to adhere to the interface that was specified. For example, the caller had good reason to expect a single numerical number written to the console.
+
+2) Second, we want to maximize testability of the code. So we keep all of the classes, Spell, Player, Minion, even Scenario, as SOLID as possible.
+
+2a) Key point is that a Scenario works with a TextReader. This means that input may come from the console, via Console.In, as the requirements specified, or may come from canned test cases in a unit test, using a StringReader, and so on.
+
+2b) Next is that we want to perform obvious validations of the input, we have the correct number of inputs, they are correctly formatted, and so on. This is performed at strategic points throughout the domain model.
+
+2c) We will throw exceptions for the time being. It will be the caller's responsibility to catch and respond to those exceptions appropriately.
+
+2d) It wasn't reflected in the initial submittal, but it would be better to accept a TextWriter as well as a TextReader, in order to maximize testability, writing to a StringBuffer-backed StringWriter, for example, as well as Console.Out.
+
+3) Next, in designing the domain model, not only do we want to capture obvious, written requirements, but we will also want to perform as exhaustive an elaboration of the domain as possible.
+
+3a) In general, the Spell tries to kill as many minions as possible. In particular, ChainLightningSpell (CLS) has some well-defined characteristics.
+
+3b) CLS can deal some Damage, but also Decrease occurs after each hit.
+
+3c) CLS also reports whether CanDamage or CannotDamage.
+
+3d) Obvious verification of the CLS values occurs upon set.
+
+3e) CLS deals its damage to the given Minion. Damage decreases. Minion is flagged that it HasBeenStruck.
+
+3f) Minions have Health, recorded whether HasBeenStruck, and whether IsDead.
+
+3g) Player has a single method, Cast, of the Spell, and some Minions.
+
+3h) Scenario works with the input and output streams, and acts as a proxy for the domain components, a wizard (Player), his/her spell, and minions.
+
+3i) Scenarios are to be run, which iterations filters minions that have been struck, ordering them by their health.
+
+3j) Next, we want the next minion that is most likely to be killed without exhausting the spell entirely. This very closely resembles a classical Constraint Satisfaction Programming Knapsack problem, but for purposes of demonstration, we will address the issue more or less brute force using LINQ (C# .NET) where, order by, etc.
+
+3k) Rinse and repeat the iteration while the spell can still damage another minion.
+
+3l) "Range" was suggested, but this is not part of the initial problem domain. We make the assumption that range has already been resolved, and that the specified minions are "within range". Although, this would be a fairly simple addition should requirements be further elaborated.
+
+4) Last but not least, the casting algorithm returns the count of minions that are known to be dead (killed).
+
+5) A note concerning performance, optimizations, etc.
+
+5a) Optimizing the collections, their sorting, is an obvious optimization step that can be performed, especially beyond the initial proof of concept, as was presented here. We cannot pre-order the minions because their state changes with every iteration, but we can filter the ones that have already been struck, which is why it closely resembles a skip list (i.e. we are "skipping" those that have been struck).
+
+What is the time complexity of your solution?
+
+The problem domain closely resembles a skip list, modeling the iterations and changes to the available set of minions. Since we're basically searching the minions for the next potential target, the average performance is O(log n) with the worst case being O(n). I think we're closer to the worst case, since the spell could potentially effect each of the minions, which requires one iteration per potential target.
+
+What is the space complexity of your solution?
+
+Along similar lines with the time complexity, as re: skip list, the average space complexity is O(n), where as the worst case is O(n log n). As long as the garbage collector is reclaiming temporary remaining arrays of minions, we closer to O(n) at a given iteration.
