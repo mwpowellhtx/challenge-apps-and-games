@@ -251,7 +251,7 @@ namespace MinionZapper
             minionCount = int.Parse(parts[0]);
             Spell = new ChainLightningSpell(parts[1], parts[2]);
 
-            if (minionCount >= 10)
+            if (minionCount > 10)
                 throw new ArgumentException(string.Format("Input line 1 must not specify more than 10 minions: {{{0}}}", text), "text");
 
             Lines.Add(text);
@@ -275,24 +275,28 @@ namespace MinionZapper
 
         public void Run()
         {
-            var affected = Wizard.Cast(Spell, Minions.ToArray());
+            var killed = Wizard.Cast(Spell, Minions.ToArray());
 
-            Console.WriteLine("Input:");
-            Console.WriteLine(Lines[0]);
-            Console.WriteLine(Lines[1]);
+            //// For purposes of online submittal.
+            //Console.WriteLine("Input:");
+            //Console.WriteLine(Lines[0]);
+            //Console.WriteLine(Lines[1]);
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            Console.WriteLine("Output:");
-            Console.WriteLine("{0}", affected);
+            //Console.WriteLine("Output:");
+            Console.WriteLine("{0}", killed);
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
+            //Console.WriteLine("Press any key to continue");
+            //Console.ReadKey();
         }
     }
 
+    /// <summary>
+    /// Tested against Visual Studio 2013 targeting .NET Framework 4.5.
+    /// </summary>
     class Program
     {
         /* Ex 1)
@@ -347,6 +351,8 @@ namespace MinionZapper
         {
             foreach (var text in Scenarios)
                 RunScenario(text);
+            //// For purposes of online submittal.
+            //new Scenario(Console.In).Run();
         }
     }
 }
