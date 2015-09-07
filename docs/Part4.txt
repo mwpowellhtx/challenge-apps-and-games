@@ -1,0 +1,49 @@
+
+Why am I being asked these questions?
+
+If you complete them, these questions help us show a more complete picture of your skillset,
+demonstrating to companies that you can design and scale systems in addition to possessing the
+coding competencies you've demonstrated through other sections.
+
+Analytics System Design
+
+Suppose the game mentioned in Part 0 has multiple types of spells the player can cast. We want
+to collect information about what spells players cast and make available a web portal where users
+can log in with their in-game username, and for each type of spell, see how often they used it as
+a trend over time, the average damage per use, and the average number of minions killed per use. At
+a high level, briefly describe how you would design such a system. Feel free to make reasonable
+assumptions; the details are deliberately underspecified. You can focus your discussion on the parts
+that you think are the most interesting.
+
+1) Be able to identify each spell type, by name, an identifier, such as a UUID, or what have you.
+2) Record normalized statistics for each spell type. Obvious statistics should be captured, such as "USED", "DAMAGE", "KILLED", "AVERAGE". I've been successful capturing this "category" as a bitwise mask, for instance.
+3) Timestamping of each use, statistic.
+4) Add a user credential and connect it with player.
+5) May need to catalog specifically the spells the player can cast.
+6) I started with a base class of Spell in the submitted code; that should be elaborated to the different other skills.
+7) I expect that ChainLightningSpell specifics will need to be broadened to support different other skills.
+8) The views and controllers will need to coordinate the calculations and tabulations to view spell usage. These should virtually write themselves once the modeling is solidly done and tested.
+
+Parallel Solution
+
+For the Dominoes problem in Part 1, how would you take advantage of multiple machines to solve it more
+efficiently? Suppose that you have a cluster of machines and the input to (a very large instance) of the
+problem is already distributed across the machines in whatever manner you prefer. You can use your choice
+of technologies. At a high level, give a short explanation of how you would parallelize the task. Feel free
+to make appropriate assumptions.
+
+1) The most obvious place to start is calculating left/right, parallelizing left from right, or vice versa.
+2) To accomplish this may need the underlying dictionary and/or the dominos themselves support some degree of locking in order to achieve safe parallel access.
+3) In the .NET realm, in particular, this could be easily accomplished with the Task Parallel Library, at a minimum, potentially also with Reactive Extensions (Rx), which support observable collections; basically the parallel analog to synchronous collections (default, .NET collections).
+
+Feedback
+
+We strive to make taking these challenges as enjoyable as possible for developers. Please let us
+know how you enjoyed your DevDraft challenge experience, what you liked, and anything you would
+like to see improved. Thank you for participating.
+
+I'm available to discuss in more detail, and can provide working examples upon request.
+
+2015-09-06 08:42 PM
+
+Next draft goes live on Monday, 9/21 9am PDT
