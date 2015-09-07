@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinionZapper.Console", "Min
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominoes.Console", "Dominoes.Console\Dominoes.Console.csproj", "{6F09F88E-3D4E-4487-A30B-34A30A9F3BBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.Console", "Commerce.Console\Commerce.Console.csproj", "{CFA9EC11-50C8-4873-8124-0C023BE644F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6F09F88E-3D4E-4487-A30B-34A30A9F3BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F09F88E-3D4E-4487-A30B-34A30A9F3BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F09F88E-3D4E-4487-A30B-34A30A9F3BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

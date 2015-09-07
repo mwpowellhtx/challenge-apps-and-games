@@ -1,0 +1,32 @@
+
+What did you change to fix the code?
+
+A couple of things, in order of least severity, in my professional judgment:
+
+1) Refactored the CostCalculator itself to decouple it from the Console like it was.
+
+1a) This helps make it more testable under a variety of conditions.
+
+1b) I can be tested using Console.In, Console.Out, a StringReader, and so on.
+
+2) Permitted taxes to be determined by either state name or their abbreviations.
+
+2a) Does so in a case insensitive manner.
+
+3) Replaced the Address parsing with regular expressions.
+
+3a) Not only was it hard to follow, but it was breaking down in the state names, zip codes, etc.
+
+3b) Additionally, not all the known address use cases were being handled properly.
+
+4) One other observation, the calculations involve integer math.
+
+4a) Usually, commerce, or more broadly fiducial apps, involve at least Single or Double floating points math, if not especially Decimal, especially where precise accuracy is desired.
+
+Did you see any bad coding practices in the original code?
+
+See answer to #2 along these lines.
+
+* Really, really strong coupling to Main and/or Console.
+* Use of integer for fiducial calculations.
+* Did not pay attention to clearly stated requirements, i.e. re: state names, abbreviations, etc.
