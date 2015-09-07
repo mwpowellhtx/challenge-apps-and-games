@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinionZapper.Console", "MinionZapper.Console\MinionZapper.Console.csproj", "{271D1321-870C-40DF-B926-686EC6E34DC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominoes.Console", "Dominoes.Console\Dominoes.Console.csproj", "{6F09F88E-3D4E-4487-A30B-34A30A9F3BBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.Console", "Commerce.Console\Commerce.Console.csproj", "{CFA9EC11-50C8-4873-8124-0C023BE644F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{271D1321-870C-40DF-B926-686EC6E34DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271D1321-870C-40DF-B926-686EC6E34DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271D1321-870C-40DF-B926-686EC6E34DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271D1321-870C-40DF-B926-686EC6E34DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F09F88E-3D4E-4487-A30B-34A30A9F3BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F09F88E-3D4E-4487-A30B-34A30A9F3BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F09F88E-3D4E-4487-A30B-34A30A9F3BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F09F88E-3D4E-4487-A30B-34A30A9F3BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
