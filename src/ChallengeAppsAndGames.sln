@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominoes.Console", "Dominoe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.Console", "Commerce.Console\Commerce.Console.csproj", "{CFA9EC11-50C8-4873-8124-0C023BE644F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feedback.Console", "Feedback.Console\Feedback.Console.csproj", "{A48634E3-0080-4819-A329-3EB988751ADA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA9EC11-50C8-4873-8124-0C023BE644F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A48634E3-0080-4819-A329-3EB988751ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A48634E3-0080-4819-A329-3EB988751ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A48634E3-0080-4819-A329-3EB988751ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A48634E3-0080-4819-A329-3EB988751ADA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
